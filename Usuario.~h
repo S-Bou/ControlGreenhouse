@@ -66,7 +66,7 @@ __published:	// IDE-managed Components
     TCheckBox *CheckBoxClima;
     TCheckBox *CheckBoxValve;
     TCheckBox *CheckBoxFan;
-    TScrollBar *ScrollBar2;
+    TScrollBar *ScrollBarElectroValvula;
     TEdit *Edit4;
     TEdit *Edit5;
     TScrollBar *ScrollBar1;
@@ -86,6 +86,7 @@ __published:	// IDE-managed Components
     void __fastcall CheckBoxClimaClick(TObject *Sender);
     void __fastcall CheckBoxValveClick(TObject *Sender);
     void __fastcall CheckBoxFanClick(TObject *Sender);
+    void __fastcall ScrollBarElectroValvulaChange(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TVPrincipal(TComponent* Owner);

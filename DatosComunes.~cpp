@@ -9,7 +9,7 @@ static int port1;
 static double humedad;
 static int port0;
 static int estadopin;
-static double EHumedad
+static double EHumedad;
 
 void Store_Port1(int data){               //Set data of port1
     port1 = data;

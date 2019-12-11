@@ -9,6 +9,6 @@ void Store_Port0(int, int);
 int estado_Wport1(void);
 int estado_Pin(void);
 double EstadoHumedad();
-void Store_EHumedad(double);
+void Store_Humedad(double);
 //---------------------------------------------------------------------------
 #endif

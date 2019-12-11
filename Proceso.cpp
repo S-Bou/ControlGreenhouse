@@ -98,7 +98,7 @@ daq_error = DAQmxWriteDigitalScalarU32(Write_Port0, true, 0.0, portstate, NULL);
     if (daq_error != 0) process_error(daq_error,"process_write_port0()");
 }
 // read ai0 --------------------------------------------------------------------
-void process_read_ai0(void) {
+void process_read_ai0(void){
     int32 daq_error;
     float64 Humity;
 

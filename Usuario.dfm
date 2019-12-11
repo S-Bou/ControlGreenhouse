@@ -5,7 +5,7 @@ object VPrincipal: TVPrincipal
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
   ClientHeight = 467
-  ClientWidth = 810
+  ClientWidth = 819
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -77,7 +77,7 @@ object VPrincipal: TVPrincipal
     Text = 'Dev3'
   end
   object GroupBoxEntradas: TGroupBox
-    Left = 408
+    Left = 416
     Top = 144
     Width = 385
     Height = 305
@@ -2263,21 +2263,18 @@ object VPrincipal: TVPrincipal
       Top = 256
       Width = 201
       Height = 33
-      Visible = False
     end
     object Shape12: TShape
       Left = 80
       Top = 256
       Width = 201
       Height = 33
-      Visible = False
     end
     object Shape13: TShape
       Left = 80
       Top = 256
       Width = 201
       Height = 33
-      Visible = False
     end
     object CheckBoxDia: TCheckBox
       Left = 16
@@ -2380,7 +2377,7 @@ object VPrincipal: TVPrincipal
     end
   end
   object GroupBox1: TGroupBox
-    Left = 408
+    Left = 416
     Top = 8
     Width = 385
     Height = 129
@@ -2499,7 +2496,7 @@ object VPrincipal: TVPrincipal
     Left = 16
     Top = 48
     Width = 385
-    Height = 329
+    Height = 337
     Caption = 'Salidas'
     Color = clScrollBar
     Enabled = False
@@ -2703,14 +2700,14 @@ object VPrincipal: TVPrincipal
       TabOrder = 3
       OnClick = CheckBoxFanClick
     end
-    object ScrollBar2: TScrollBar
+    object ScrollBarElectroValvula: TScrollBar
       Left = 16
       Top = 192
       Width = 281
       Height = 25
-      Enabled = False
       PageSize = 0
       TabOrder = 4
+      OnChange = ScrollBarElectroValvulaChange
     end
     object Edit4: TEdit
       Left = 304
@@ -2719,8 +2716,8 @@ object VPrincipal: TVPrincipal
       Height = 24
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
+      Font.Color = clBlack
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
@@ -2730,11 +2727,11 @@ object VPrincipal: TVPrincipal
       Left = 304
       Top = 289
       Width = 65
-      Height = 24
+      Height = 28
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
+      Font.Color = clBlack
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False

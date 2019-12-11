@@ -11,12 +11,15 @@
 int contador=1;
 int conthume=1;
 char DeviceName[20];
+double humedad;
 TVPrincipal *VPrincipal;
 TVPrincipal *EsDeNoche;
 TVPrincipal *EsDeDia;
 TVPrincipal *PuertaAbierta;
 TVPrincipal *PuertaCerrada;
 TVPrincipal *reinicio;
+TVPrincipal *ElectroValvula_ON;
+TVPrincipal *ElectroValvula_OFF;
 //---------------------------------------------------------------------------
 __fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
     : TForm(Owner)
@@ -53,23 +56,21 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     int port1 = estado_Port1();
 
     process_read_ai0();
-    double humedad;
     humedad = estado_AI0();
     VPrincipal->Edit2->Text=redondeo(humedad/2);
     VPrincipal->Edit2->Text=Edit2->Text+"%";
-    if (humedad<40){                               //State of electrovalve P0_2
+    if (humedad<40){                               //State of electrovalve P0_2 and AO0
         VPrincipal->Shape8->Brush->Color=clYellow;
         VPrincipal->CheckBoxValve->Checked=true;
         VPrincipal->Shape8->Width=humedad;
-        VPrincipal->Shape3->Brush->Color=clRed;           //Poner aqui electrovalvula
+        VPrincipal->Shape3->Brush->Color=clRed;
         Store_Port0(0x04, PIN_ON);
-        Store_EHumedad(humedad);
-        process_write_port0();
-        process_write_ao0();
+        ScrollBarElectroValvulaChange(ElectroValvula_ON);
         VPrincipal->Shape8->Visible=true;
         VPrincipal->Shape9->Visible=false;
         VPrincipal->Shape10->Visible=false;
     }else if(humedad>=40 && humedad<=160){
+        ScrollBarElectroValvulaChange(ElectroValvula_OFF);
         VPrincipal->CheckBoxValve->Checked=false;
         VPrincipal->Shape9->Brush->Color=clBlue;
         VPrincipal->Shape9->Brush->Color=clBlue;
@@ -80,7 +81,8 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->Shape8->Visible=false;
         VPrincipal->Shape9->Visible=true;
         VPrincipal->Shape10->Visible=false;
-    }else{
+    }else{                                                  //Humity > 80%
+        ScrollBarElectroValvulaChange(ElectroValvula_OFF);
         VPrincipal->CheckBoxValve->Checked=false;
         VPrincipal->Shape10->Brush->Color=clRed;
         VPrincipal->Shape10->Width=humedad;
@@ -311,5 +313,20 @@ double redondeo(double num){                       //Redondeo de decimales
     double rounded = (int)(num * 10.0)/10.0;       //El numero de ceros
     return rounded;                                //determina los decimales
 }                                                  //que muestra: 10->1 decimal
+//---------------------------------------------------------------------------
+void __fastcall TVPrincipal::ScrollBarElectroValvulaChange(TObject *Sender)
+{
+    Store_Humedad(humedad);
+    process_write_port0();
+    process_write_ao0();
+    VPrincipal->ScrollBarElectroValvula->Position=humedad;
+    VPrincipal->Edit4->Text=redondeo((humedad/2)*5);
+    VPrincipal->Edit4->Text=Edit4->Text+"%";
+    if(Sender == ElectroValvula_OFF){
+        VPrincipal->ScrollBarElectroValvula->Position=0;
+        VPrincipal->Edit4->Text=0;
+        VPrincipal->Edit4->Text=Edit4->Text+"%";
+    }
+}
 //---------------------------------------------------------------------------
 
