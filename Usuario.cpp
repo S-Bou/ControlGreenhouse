@@ -29,7 +29,7 @@ void __fastcall TVPrincipal::BotonIniciarTarjeta(TObject *Sender)
     process_init(DeviceName);
     PTimer->Enabled=true;
     process_write_port0();
-    process_write_ao0(0);
+    process_write_ao0();
     VPrincipal->GroupBoxEntradas->Enabled=true;
     VPrincipal->GroupBoxSalidas->Enabled=true;
 }
@@ -63,7 +63,9 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->Shape8->Width=humedad;
         VPrincipal->Shape3->Brush->Color=clRed;           //Poner aqui electrovalvula
         Store_Port0(0x04, PIN_ON);
+        Store_EHumedad(humedad);
         process_write_port0();
+        process_write_ao0();
         VPrincipal->Shape8->Visible=true;
         VPrincipal->Shape9->Visible=false;
         VPrincipal->Shape10->Visible=false;

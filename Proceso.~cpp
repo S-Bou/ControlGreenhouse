@@ -68,7 +68,7 @@ daq_error = DAQmxCreateAOVoltageChan(Write_AO0, nameAI1,
             "", 0.0, 5.0, DAQmx_Val_Volts, NULL);
     if(daq_error != 0)process_error(daq_error, "process_init()->2.3");
 
-Store_Port0(0xFF, PIN_ON);
+Store_Port0(0xFF, PIN_OFF);
 }
 // read port 1 pins and return state -------------------------------------------
 void process_read_port1(void) {
@@ -106,4 +106,12 @@ daq_error = DAQmxReadAnalogScalarF64 (Read_AI0, 1.0,&Humity, NULL);
     if (daq_error != 0)process_error(daq_error,"process_read_ai0()");
 
     Store_AI0(Humity);
+}
+// write ao0 -------------------------------------------------------------------
+void process_write_ao0(double data){
+    int32 daq_error;
+    float64 volts = data;
+
+daq_error = DAQmxWriteAnalogScalarF64(Write_AO0, true, 1.0, volts, NULL);
+    if(daq_error != 0)process_error(daq_error, "process_write_ao0()");
 }

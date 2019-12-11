@@ -32,7 +32,6 @@ __published:	// IDE-managed Components
     TCheckBox *CheckBoxNoche;
     TCheckBox *CheckBoxPuertaCerrada;
     TTimer *TimerPAbierta;
-    TScrollBar *ScrollBar2;
     TLabel *Label16;
     TEdit *Edit3;
     TShape *Shape7;
@@ -67,6 +66,13 @@ __published:	// IDE-managed Components
     TCheckBox *CheckBoxClima;
     TCheckBox *CheckBoxValve;
     TCheckBox *CheckBoxFan;
+    TScrollBar *ScrollBar2;
+    TEdit *Edit4;
+    TEdit *Edit5;
+    TScrollBar *ScrollBar1;
+    TShape *Shape11;
+    TShape *Shape12;
+    TShape *Shape13;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall BotonIniciarAutomata(TObject *Sender);
     void __fastcall TimerPuertos(TObject *Sender);

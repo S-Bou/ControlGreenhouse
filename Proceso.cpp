@@ -108,9 +108,9 @@ daq_error = DAQmxReadAnalogScalarF64 (Read_AI0, 1.0,&Humity, NULL);
     Store_AI0(Humity);
 }
 // write ao0 -------------------------------------------------------------------
-void process_write_ao0(double data){
+void process_write_ao0(void){
     int32 daq_error;
-    float64 volts = data;
+    float64 volts = EstadoHumedad();
 
 daq_error = DAQmxWriteAnalogScalarF64(Write_AO0, true, 1.0, volts, NULL);
     if(daq_error != 0)process_error(daq_error, "process_write_ao0()");
