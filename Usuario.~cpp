@@ -16,8 +16,10 @@ double temperatura;
 TVPrincipal *VPrincipal;
 TVPrincipal *EsDeNoche;
 TVPrincipal *EsDeDia;
-TVPrincipal *PuertaAbierta;
+TVPrincipal *CLIMA_OFF;
+TVPrincipal *CLIMA_ON;
 TVPrincipal *PuertaCerrada;
+TVPrincipal *PuertaAbierta;
 TVPrincipal *reinicio;
 TVPrincipal *ElectroValvula_ON;
 TVPrincipal *ElectroValvula_OFF;
@@ -80,6 +82,8 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->Shape10->Visible=false;
     }
     if(humedad>=40 && humedad<=160){
+        VPrincipal->CheckBoxClima->Checked=true;
+        VPrincipal->Shape2->Brush->Color=clRed;
         VPrincipal->TimerLedHumedad->Enabled = false;
         VPrincipal->Shape4->Brush->Color=clWhite;
         VPrincipal->ContadorHU->Color=clWhite;
@@ -89,7 +93,6 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         process_write_port0();
         ScrollBarElectroValvulaChange(ElectroValvula_OFF);
         VPrincipal->CheckBoxValve->Checked=false;
-        VPrincipal->Shape9->Brush->Color=clBlue;
         VPrincipal->Shape9->Brush->Color=clBlue;
         VPrincipal->Shape9->Width=humedad;
         VPrincipal->Shape3->Brush->Color=clWhite;
@@ -102,7 +105,7 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     if(humedad>160){                                          //Humity > 80%
         VPrincipal->TimerLedHumedad->Enabled=true;
         ScrollBarElectroValvulaChange(ElectroValvula_OFF);
-        VPrincipal->CheckBoxValve->Checked=false;
+        //VPrincipal->CheckBoxValve->Checked=false;
         VPrincipal->Shape10->Brush->Color=clRed;
         VPrincipal->Shape10->Width=humedad;
         VPrincipal->Shape8->Visible=false;
@@ -120,18 +123,12 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     }
     if ((port1 & 0x02) != 0){                        //State of clima P0_1
         CheckBoxPuertaCerradaClick(PuertaCerrada);
-        VPrincipal->Shape2->Brush->Color=clRed;
-        VPrincipal->CheckBoxClima->Checked=true;
         VPrincipal->ContadorPA->Color=clWhite;
         VAlarmaPuerta->Close();
     }else{
         CheckBoxPuertaAbiertaClick(PuertaAbierta);
     }
-   /*
-        Store_Port0(0x08, PIN_OFF);
-        process_write_port0();
-        conthume=1;
-   */
+
 //---------TEMPERATURA-----------------------------------------------------------
     process_read_ai1();
     temperatura = estado_AI1();
@@ -193,10 +190,9 @@ void __fastcall TVPrincipal::Timer_Led_Humedad(TObject *Sender)
             VPrincipal->Shape4->Brush->Color=clWhite;
             VPrincipal->ContadorHU->Color=clRed;
         }
-    //CheckBoxClimaClick(PuertaAbierta);
+    VPrincipal->CheckBoxClima->Checked=false;
+    VPrincipal->Shape2->Brush->Color=clWhite;
     VPrincipal->ContadorHU->Text=conthume;
-    //VPrincipal->CheckBoxClima->Checked=false;
-    //VPrincipal->Shape2->Brush->Color=clWhite;
     Store_Port0(0x02, PIN_OFF);
     process_write_port0();
     }
@@ -220,7 +216,7 @@ void __fastcall TVPrincipal::TimerPuertaAbierta(TObject *Sender)
             VPrincipal->ContadorPA->Color=clRed;
             VAlarmaPuerta->Label1->Font->Color=clBlack;
         }
-    CheckBoxClimaClick(PuertaAbierta);
+    CheckBoxClimaClick(CLIMA_OFF);
     VPrincipal->ContadorPA->Text=contador;
     Store_Port0(0x02, PIN_OFF);
     VAlarmaPuerta->Show();
@@ -319,19 +315,13 @@ void __fastcall TVPrincipal::CheckBoxLamparaClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxClimaClick(TObject *Sender)
 {
-    if(VPrincipal->CheckBoxClima->Checked==true){
+    if(VPrincipal->CheckBoxClima->Checked==true || Sender==CLIMA_ON){
         VPrincipal->Shape2->Brush->Color=clRed;
         Store_Port0(0x02, PIN_ON);
         process_write_port0();
     }
-    if(VPrincipal->CheckBoxClima->Checked==false){
+    if(VPrincipal->CheckBoxClima->Checked==false || Sender==CLIMA_OFF){
         VPrincipal->Shape2->Brush->Color=clWhite;
-        Store_Port0(0x02, PIN_OFF);
-        process_write_port0();
-    }
-    if(Sender==PuertaAbierta){
-        VPrincipal->Shape2->Brush->Color=clWhite;
-        VPrincipal->CheckBoxClima->Checked=false;
         Store_Port0(0x02, PIN_OFF);
         process_write_port0();
     }
@@ -389,20 +379,21 @@ double redondeo(double num){                       //Redondeo de decimales
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::ScrollBarElectroValvulaChange(TObject *Sender)
 {
-    VPrincipal->CheckBoxValve->Checked=true;
-    VPrincipal->Shape3->Brush->Color=clRed;
-    Store_Humedad(VPrincipal->ScrollBarElectroValvula->Position);
-    process_write_port0();
-    process_write_ao0();
-
-    VPrincipal->Edit4->Text=VPrincipal->ScrollBarElectroValvula->Position;
-    VPrincipal->Edit4->Text=Edit4->Text+"%";
     if(Sender==ElectroValvula_OFF || VPrincipal->ScrollBarElectroValvula->Position==0){
         VPrincipal->CheckBoxValve->Checked=false;
         VPrincipal->Shape3->Brush->Color=clWhite;
         VPrincipal->ScrollBarElectroValvula->Position=0;
         VPrincipal->Edit4->Text=0;
         VPrincipal->Edit4->Text=Edit4->Text+"%";
+    }else{
+        VPrincipal->CheckBoxValve->Checked=true;
+        VPrincipal->Shape3->Brush->Color=clRed;
+        Store_Humedad(VPrincipal->ScrollBarElectroValvula->Position);
+        process_write_port0();
+        process_write_ao0();
+
+    VPrincipal->Edit4->Text=VPrincipal->ScrollBarElectroValvula->Position;
+    VPrincipal->Edit4->Text=Edit4->Text+"%";
     }
 }
 //---------------------------------------------------------------------------
