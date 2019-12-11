@@ -137,9 +137,10 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     VPrincipal->Edit3->Text=redondeo(tempereal);
     VPrincipal->Edit3->Text=Edit3->Text+"ºC";
     if (tempereal<15){                               //State of temperature P0_3 and AO1
-        VPrincipal->CheckBoxFan->Checked=true;
-        VPrincipal->Shape6->Brush->Color=clRed;
-
+        VPrincipal->CheckBoxClima->Checked=false;
+        VPrincipal->Shape2->Brush->Color=clWhite;
+        Store_Port0(0x02, PIN_OFF);
+        process_write_port0();
 
         VPrincipal->Shape11->Brush->Color=clBlue;
         VPrincipal->Shape11->Width=temperatura;
@@ -155,8 +156,10 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->Shape13->Visible=false;
     }
     if(tempereal>35){                               //Temperature > 35ºC
-
-        ScrollBarElectroValvulaChange(ElectroValvula_OFF);
+        VPrincipal->Shape6->Brush->Color=clRed;
+        VPrincipal->CheckBoxFan->Checked=true;
+        Store_Port0(0x08, PIN_ON);
+        process_write_port0();
 
         float VE_Inversa = temperatura/2;
         VPrincipal->ScrollBarVentilacion->Position= VE_Inversa;

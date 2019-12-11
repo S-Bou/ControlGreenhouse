@@ -1,6 +1,6 @@
 object VPrincipal: TVPrincipal
-  Left = 181
-  Top = 123
+  Left = 400
+  Top = 126
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
@@ -2373,7 +2373,6 @@ object VPrincipal: TVPrincipal
       Top = 257
       Width = 73
       Height = 32
-      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
@@ -2722,7 +2721,7 @@ object VPrincipal: TVPrincipal
       Top = 193
       Width = 65
       Height = 28
-      Enabled = False
+      Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -16
@@ -2737,7 +2736,7 @@ object VPrincipal: TVPrincipal
       Top = 289
       Width = 65
       Height = 28
-      Enabled = False
+      Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -16
