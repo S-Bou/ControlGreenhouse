@@ -1,11 +1,11 @@
 object VPrincipal: TVPrincipal
-  Left = 180
+  Left = 181
   Top = 123
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
   ClientHeight = 467
-  ClientWidth = 819
+  ClientWidth = 815
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -95,6 +95,28 @@ object VPrincipal: TVPrincipal
     ParentCtl3D = False
     ParentFont = False
     TabOrder = 3
+    object Label16: TLabel
+      Left = 80
+      Top = 233
+      Width = 162
+      Height = 24
+      Caption = 'Temperatura: AI1'
+      Color = clScrollBar
+      DragMode = dmAutomatic
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Shape14: TShape
+      Left = 80
+      Top = 256
+      Width = 201
+      Height = 33
+    end
     object Label8: TLabel
       Left = 80
       Top = 169
@@ -1746,22 +1768,6 @@ object VPrincipal: TVPrincipal
         FFFFFFFFFF00}
       Visible = False
     end
-    object Label16: TLabel
-      Left = 80
-      Top = 233
-      Width = 162
-      Height = 24
-      Caption = 'Temperatura: AI1'
-      Color = clScrollBar
-      DragMode = dmAutomatic
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-    end
     object Shape7: TShape
       Left = 80
       Top = 192
@@ -1785,7 +1791,7 @@ object VPrincipal: TVPrincipal
     end
     object Shape10: TShape
       Left = 80
-      Top = 192
+      Top = 256
       Width = 201
       Height = 33
       Visible = False
@@ -2258,7 +2264,7 @@ object VPrincipal: TVPrincipal
         FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
         FE00}
     end
-    object Shape11: TShape
+    object Shape13: TShape
       Left = 80
       Top = 256
       Width = 201
@@ -2270,7 +2276,7 @@ object VPrincipal: TVPrincipal
       Width = 201
       Height = 33
     end
-    object Shape13: TShape
+    object Shape11: TShape
       Left = 80
       Top = 256
       Width = 201
@@ -2368,7 +2374,7 @@ object VPrincipal: TVPrincipal
       Height = 32
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
@@ -2737,12 +2743,11 @@ object VPrincipal: TVPrincipal
       ParentFont = False
       TabOrder = 6
     end
-    object ScrollBar1: TScrollBar
+    object ScrollBarVentilacion: TScrollBar
       Left = 16
       Top = 288
       Width = 281
       Height = 25
-      Enabled = False
       PageSize = 0
       TabOrder = 7
     end

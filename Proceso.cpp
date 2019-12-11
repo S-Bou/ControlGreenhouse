@@ -9,6 +9,7 @@ int portstate;
 TaskHandle Read_Port1;
 TaskHandle Write_Port0;
 TaskHandle Read_AI0;
+TaskHandle Read_AI1;
 TaskHandle Write_AO0;
 // process error reporting --------------------------------------------------
 void process_error(int32 code, char *suffix) {
@@ -25,7 +26,7 @@ void process_error(int32 code, char *suffix) {
 // process initialization ---------------------------------------------------
 void process_init(char *deviceName) {
 
-    char nameP1[20], nameP0[20], nameAI0[20], nameAI1[20];
+    char nameP1[20], nameP0[20], nameAI0[20], nameAI1[20], nameAO0[20];
     strcpy(nameP1, deviceName);
     strcat(nameP1, "/port1");
     strcpy(nameP0, deviceName);
@@ -33,7 +34,9 @@ void process_init(char *deviceName) {
     strcpy(nameAI0, deviceName);
     strcat(nameAI0, "/ai0");
     strcpy(nameAI1, deviceName);
-    strcat(nameAI1, "/ao0");
+    strcat(nameAI1, "/ai1");
+    strcpy(nameAO0, deviceName);
+    strcat(nameAO0, "/ao0");
 
     int32 daq_error;
     portstate = 0x00;
@@ -46,6 +49,9 @@ daq_error = DAQmxCreateTask("Write task",&Write_Port0);
     if(daq_error != 0)process_error(daq_error,"process_init()->1.1");
 
 daq_error = DAQmxCreateTask("Analog read task", &Read_AI0);
+    if(daq_error != 0)process_error(daq_error,"process_init()->1.2");
+
+daq_error = DAQmxCreateTask("Analog read task", &Read_AI1);
     if(daq_error != 0)process_error(daq_error,"process_init()->1.2");
 
 daq_error = DAQmxCreateTask("Analog write task", &Write_AO0);
@@ -64,7 +70,11 @@ daq_error = DAQmxCreateAIVoltageChan(Read_AI0, nameAI0,
             "", DAQmx_Val_RSE, 0.0, 10.0, DAQmx_Val_Volts, NULL);
     if(daq_error != 0)process_error(daq_error, "process_init()->2.2");
 
-daq_error = DAQmxCreateAOVoltageChan(Write_AO0, nameAI1,
+daq_error = DAQmxCreateAIVoltageChan(Read_AI1, nameAI1,
+            "", DAQmx_Val_RSE, 0.0, 10.0, DAQmx_Val_Volts, NULL);
+    if(daq_error != 0)process_error(daq_error, "process_init()->2.2");
+
+daq_error = DAQmxCreateAOVoltageChan(Write_AO0, nameAO0,
             "", 0.0, 5.0, DAQmx_Val_Volts, NULL);
     if(daq_error != 0)process_error(daq_error, "process_init()->2.3");
 
@@ -106,6 +116,16 @@ daq_error = DAQmxReadAnalogScalarF64 (Read_AI0, 1.0,&Humity, NULL);
     if (daq_error != 0)process_error(daq_error,"process_read_ai0()");
 
     Store_AI0(Humity);
+}
+// read ai1 --------------------------------------------------------------------
+void process_read_ai1(void){
+    int32 daq_error;
+    float64 tempe;
+
+daq_error = DAQmxReadAnalogScalarF64 (Read_AI1, 1.0,&tempe, NULL);
+    if (daq_error != 0)process_error(daq_error,"process_read_ai0()");
+
+    Store_AI1(tempe);
 }
 // write ao0 -------------------------------------------------------------------
 void process_write_ao0(void){

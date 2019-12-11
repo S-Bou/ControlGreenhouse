@@ -12,6 +12,7 @@ int contador=1;
 int conthume=1;
 char DeviceName[20];
 double humedad;
+double temperatura;
 TVPrincipal *VPrincipal;
 TVPrincipal *EsDeNoche;
 TVPrincipal *EsDeDia;
@@ -59,6 +60,7 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     humedad = estado_AI0();
     VPrincipal->Edit2->Text=redondeo(humedad/2);
     VPrincipal->Edit2->Text=Edit2->Text+"%";
+
     if (humedad<40){                               //State of electrovalve P0_2 and AO0
         VPrincipal->Shape8->Brush->Color=clYellow;
         VPrincipal->CheckBoxValve->Checked=true;
@@ -127,6 +129,37 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         process_write_port0();
         conthume=1;
     }
+//---------TEMPERATURA-----------------------------------------------------------
+    process_read_ai1();
+    temperatura = estado_AI1();
+    double tempereal = temperatura/4;
+    VPrincipal->Edit3->Text=redondeo(tempereal);
+    VPrincipal->Edit3->Text=Edit3->Text+"ºC";
+    if (tempereal<15){                               //State of temperature P0_3 and AO1
+        VPrincipal->CheckBoxFan->Checked=true;
+        VPrincipal->Shape6->Brush->Color=clRed;
+
+        VPrincipal->Shape11->Brush->Color=clBlue;
+        VPrincipal->Shape11->Width=temperatura;
+        VPrincipal->Shape11->Visible=true;
+        VPrincipal->Shape12->Visible=false;
+        VPrincipal->Shape13->Visible=false;
+    }
+    if(tempereal>=15 && tempereal<=35){
+        VPrincipal->Shape12->Brush->Color=clGreen;
+        VPrincipal->Shape12->Width=temperatura;
+        VPrincipal->Shape11->Visible=false;
+        VPrincipal->Shape12->Visible=true;
+        VPrincipal->Shape13->Visible=false;
+    }
+    if(tempereal>35){                               //Temperature > 35ºC
+        VPrincipal->Shape13->Brush->Color=clRed;
+        VPrincipal->Shape13->Width=temperatura;
+        VPrincipal->Shape11->Visible=false;
+        VPrincipal->Shape12->Visible=false;
+        VPrincipal->Shape13->Visible=true;
+    }
+
 
     if(VPrincipal->PTimer->Color == clYellow){  //change color of buttton timer
         VPrincipal->PTimer->Color = clLime;
@@ -292,22 +325,25 @@ void __fastcall TVPrincipal::CheckBoxValveClick(TObject *Sender)
 {
     if(VPrincipal->CheckBoxValve->Checked==true){
         VPrincipal->Shape3->Brush->Color=clRed;
-        VPrincipal->ScrollBarElectroValvula->Position=100;
-        Store_Humedad(VPrincipal->ScrollBarElectroValvula->Position);
-        Store_Port0(0x04, PIN_OFF);
+        //VPrincipal->ScrollBarElectroValvula->Position=100;
+        VPrincipal->Edit4->Text=100;
+        VPrincipal->Edit4->Text=Edit4->Text+"%";
+        Store_Humedad(100);
+        Store_Port0(0x04, PIN_ON);
         process_write_port0();
         process_write_ao0();
     }
     if(VPrincipal->CheckBoxValve->Checked==false){
         VPrincipal->Shape3->Brush->Color=clWhite;
-        VPrincipal->ScrollBarElectroValvula->Position=0;
-        Store_Humedad(VPrincipal->ScrollBarElectroValvula->Position);
+        //VPrincipal->ScrollBarElectroValvula->Position=0;
+        VPrincipal->Edit4->Text=0;
+        VPrincipal->Edit4->Text=Edit4->Text+"%";
+        Store_Humedad(0);
         Store_Port0(0x04, PIN_OFF);
         process_write_port0();
         process_write_ao0();
     }
-    VPrincipal->Edit4->Text=VPrincipal->ScrollBarElectroValvula->Position;
-    VPrincipal->Edit4->Text=Edit4->Text+"%";
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxFanClick(TObject *Sender)

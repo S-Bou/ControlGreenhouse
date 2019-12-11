@@ -10,21 +10,27 @@ static double humedad;
 static int port0;
 static int estadopin;
 static double Humedad;
+static double temperatura;
 
 void Store_Port1(int data){               //Set data of port1
     port1 = data;
 }
-int estado_Port1(){                       //Get data of port1
+int estado_Port1(void){                       //Get data of port1
     return (port1);
 }
 
 void Store_AI0(float humity){             //Set data of port ai0
-    humedad = (humity*5+100);
+    humedad = humity*5+100;
 }
-double estado_AI0(){                      //Get data of port ai0
+double estado_AI0(void){                      //Get data of port ai0
     return (humedad);
 }
-
+void Store_AI1(float tempera){             //Set data of port ai1
+    temperatura = tempera*5+100;
+}
+double estado_AI1(void){                      //Get data of port ai1
+    return (temperatura);
+}
 void Store_Port0(int MaskBit, int StatePin){     //Set data of port0
     port0 = MaskBit;
     estadopin = StatePin;
@@ -38,7 +44,7 @@ int estado_Pin(void){                 //Get data of state ON/OFF in port0
 void Store_Humedad(double EstadoHumedad){
     Humedad = EstadoHumedad/10;
 }
-double EstadoHumedad(){
+double EstadoHumedad(void){
     return (Humedad);
 }
 

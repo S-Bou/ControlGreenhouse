@@ -69,10 +69,11 @@ __published:	// IDE-managed Components
     TScrollBar *ScrollBarElectroValvula;
     TEdit *Edit4;
     TEdit *Edit5;
-    TScrollBar *ScrollBar1;
+    TScrollBar *ScrollBarVentilacion;
     TShape *Shape11;
     TShape *Shape12;
     TShape *Shape13;
+    TShape *Shape14;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall BotonIniciarAutomata(TObject *Sender);
     void __fastcall TimerPuertos(TObject *Sender);
