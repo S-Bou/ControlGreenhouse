@@ -65,7 +65,14 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->Shape8->Width=humedad;
         VPrincipal->Shape3->Brush->Color=clRed;
         Store_Port0(0x04, PIN_ON);
-        ScrollBarElectroValvulaChange(ElectroValvula_ON);
+        Store_Humedad(VPrincipal->ScrollBarElectroValvula->Position);
+        process_write_port0();
+        process_write_ao0();
+        float HU_Inversa = ((humedad-40)/2)*-5;
+        VPrincipal->ScrollBarElectroValvula->Position= HU_Inversa;
+        VPrincipal->Edit4->Text=redondeo(HU_Inversa);
+        VPrincipal->Edit4->Text=Edit4->Text+"%";
+        VPrincipal->Edit5->Text=humedad;
         VPrincipal->Shape8->Visible=true;
         VPrincipal->Shape9->Visible=false;
         VPrincipal->Shape10->Visible=false;
@@ -285,14 +292,25 @@ void __fastcall TVPrincipal::CheckBoxValveClick(TObject *Sender)
 {
     if(VPrincipal->CheckBoxValve->Checked==true){
         VPrincipal->Shape3->Brush->Color=clRed;
+        //VPrincipal->ScrollBarElectroValvula->Position=100;
+        VPrincipal->Edit4->Text=100;
+        VPrincipal->Edit4->Text=Edit4->Text+"%";
+        Store_Humedad(100);
         Store_Port0(0x04, PIN_ON);
         process_write_port0();
+        process_write_ao0();
     }
     if(VPrincipal->CheckBoxValve->Checked==false){
         VPrincipal->Shape3->Brush->Color=clWhite;
+        //VPrincipal->ScrollBarElectroValvula->Position=0;
+        VPrincipal->Edit4->Text=0;
+        VPrincipal->Edit4->Text=Edit4->Text+"%";
+        Store_Humedad(0);
         Store_Port0(0x04, PIN_OFF);
         process_write_port0();
+        process_write_ao0();
     }
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxFanClick(TObject *Sender)
@@ -316,13 +334,17 @@ double redondeo(double num){                       //Redondeo de decimales
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::ScrollBarElectroValvulaChange(TObject *Sender)
 {
-    Store_Humedad(humedad);
+    VPrincipal->CheckBoxValve->Checked=true;
+    VPrincipal->Shape3->Brush->Color=clRed;
+    Store_Humedad(VPrincipal->ScrollBarElectroValvula->Position);
     process_write_port0();
     process_write_ao0();
-    VPrincipal->ScrollBarElectroValvula->Position=humedad;
-    VPrincipal->Edit4->Text=redondeo((humedad/2)*5);
+
+    VPrincipal->Edit4->Text=VPrincipal->ScrollBarElectroValvula->Position;
     VPrincipal->Edit4->Text=Edit4->Text+"%";
-    if(Sender == ElectroValvula_OFF){
+    if(Sender==ElectroValvula_OFF || VPrincipal->ScrollBarElectroValvula->Position==0){
+        VPrincipal->CheckBoxValve->Checked=false;
+        VPrincipal->Shape3->Brush->Color=clWhite;
         VPrincipal->ScrollBarElectroValvula->Position=0;
         VPrincipal->Edit4->Text=0;
         VPrincipal->Edit4->Text=Edit4->Text+"%";

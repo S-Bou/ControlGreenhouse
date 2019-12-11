@@ -36,7 +36,7 @@ int estado_Pin(void){                 //Get data of state ON/OFF in port0
     return (estadopin);
 }
 void Store_Humedad(double EstadoHumedad){
-    Humedad = EstadoHumedad;
+    Humedad = EstadoHumedad/10;
 }
 double EstadoHumedad(){
     return (Humedad);

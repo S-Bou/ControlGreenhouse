@@ -1,6 +1,6 @@
 object VPrincipal: TVPrincipal
-  Left = 178
-  Top = 101
+  Left = 180
+  Top = 123
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
@@ -2628,7 +2628,7 @@ object VPrincipal: TVPrincipal
       ParentFont = False
     end
     object Label19: TLabel
-      Left = 316
+      Left = 324
       Top = 232
       Width = 53
       Height = 29
