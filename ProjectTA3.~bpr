@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="ProjectTA3.exe"/>
+    <OBJFILES value="ProjectTA3.obj Usuario.obj Proceso.obj DatosComunes.obj ss_daq.obj 
+      ss_daq_niusb6008.obj ss_nidaqmx.obj ss_signal.obj ss_visual_niusb6008.obj 
+      ss_visual_signal.obj DatosComunes.obj Proceso.obj ProjectTA3.obj 
+      ss_daq.obj ss_daq_niusb6008.obj ss_nidaqmx.obj ss_signal.obj 
+      ss_visual_niusb6008.obj ss_visual_signal.obj Usuario.obj 
+      VentanaPuertaAbierta.obj"/>
+    <RESFILES value="ProjectTA3.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) Usuario.dfm ss_visual_niusb6008.dfm ss_visual_signal.dfm 
+      VentanaPuertaAbierta.dfm"/>
+    <LIBFILES value="NIDAQmx_bcb.lib"/>
+    <LIBRARIES value=""/>
+    <SPARELIBS value="vcl.lib rtl.lib"/>
+    <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
+      vcldbx.bpi ibxpress.bpi dsnap.bpi cds.bpi bdecds.bpi qrpt.bpi teeui.bpi 
+      teedb.bpi tee.bpi dss.bpi teeqr.bpi visualclx.bpi visualdbclx.bpi 
+      bcbsmp.bpi vclie.bpi xmlrtl.bpi inet.bpi inetdbbde.bpi inetdbxpress.bpi 
+      inetdb.bpi nmfast.bpi bcbie.bpi soaprtl.bpi dclocx.bpi dbexpress.bpi 
+      dbxcds.bpi indy.bpi bcb2kaxserver.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="ProjectTA3.cpp"/>
+    <INCLUDEPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;&quot;C:\Users\bouyo\OneDrive\Documentos\3ºUNI\Semestre A\Informática Industial I\Proyectos C++B6\Tasks_3_and_4\TA3&quot;;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot;;&quot;C:\Users\bouyo\OneDrive\Documentos\3ºUNI\Semestre A\Informática Industial I\Proyectos C++B6\Tasks_3_and_4\TA3&quot;;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I&quot;C:\Program Files (x86)\Borland\CBuilder6\Projects&quot; 
+      -I&quot;C:\Users\bouyo\OneDrive\Documentos\3ºUNI\Semestre A\Informática Industial I\Proyectos C++B6\Tasks_3_and_4\TA3&quot; 
+      -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
+      -tW -tWM"/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj $(PACKAGES) Memmgr.Lib sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mti.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="ProjectTA3.res" FORMNAME="" UNITNAME="ProjectTA3.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.cpp" FORMNAME="" UNITNAME="ProjectTA3" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.cpp" FORMNAME="VPrincipal" UNITNAME="Usuario" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.cpp" FORMNAME="" UNITNAME="Proceso" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.cpp" FORMNAME="" UNITNAME="DatosComunes" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq.cpp" FORMNAME="" UNITNAME="ss_daq.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq_niusb6008.cpp" FORMNAME="" UNITNAME="ss_daq_niusb6008.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_nidaqmx.cpp" FORMNAME="" UNITNAME="ss_nidaqmx.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_signal.cpp" FORMNAME="" UNITNAME="ss_signal.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.cpp" FORMNAME="F_niusb6008" UNITNAME="ss_visual_niusb6008" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.cpp" FORMNAME="F_signaled" UNITNAME="ss_visual_signal" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="NIDAQmx_bcb.lib" FORMNAME="" UNITNAME="NIDAQmx_bcb.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.~cpp" FORMNAME="" UNITNAME="DatosComunes.~cpp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.~h" FORMNAME="" UNITNAME="DatosComunes.~h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.h" FORMNAME="" UNITNAME="DatosComunes.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.obj" FORMNAME="" UNITNAME="DatosComunes.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="NIDAQmx.h" FORMNAME="" UNITNAME="NIDAQmx.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.~cpp" FORMNAME="" UNITNAME="Proceso.~cpp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.~h" FORMNAME="" UNITNAME="Proceso.~h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.h" FORMNAME="" UNITNAME="Proceso.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.obj" FORMNAME="" UNITNAME="Proceso.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.~bpr" FORMNAME="" UNITNAME="ProjectTA3.~bpr" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.~cpp" FORMNAME="" UNITNAME="ProjectTA3.~cpp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.bpr" FORMNAME="" UNITNAME="ProjectTA3.bpr" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.obj" FORMNAME="" UNITNAME="ProjectTA3.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.tds" FORMNAME="" UNITNAME="ProjectTA3.tds" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq.h" FORMNAME="" UNITNAME="ss_daq.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq.obj" FORMNAME="" UNITNAME="ss_daq.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq_niusb6008.h" FORMNAME="" UNITNAME="ss_daq_niusb6008.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq_niusb6008.obj" FORMNAME="" UNITNAME="ss_daq_niusb6008.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_nidaqmx.h" FORMNAME="" UNITNAME="ss_nidaqmx.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_nidaqmx.obj" FORMNAME="" UNITNAME="ss_nidaqmx.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_niusb6008b.ico" FORMNAME="" UNITNAME="ss_niusb6008b.ico" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_niusb6008b.png" FORMNAME="" UNITNAME="ss_niusb6008b.png" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_signal.h" FORMNAME="" UNITNAME="ss_signal.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_signal.obj" FORMNAME="" UNITNAME="ss_signal.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_version.h" FORMNAME="" UNITNAME="ss_version.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.ddp" FORMNAME="" UNITNAME="ss_visual_niusb6008.ddp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.dfm" FORMNAME="" UNITNAME="ss_visual_niusb6008.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.h" FORMNAME="" UNITNAME="ss_visual_niusb6008.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.obj" FORMNAME="" UNITNAME="ss_visual_niusb6008.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.ddp" FORMNAME="" UNITNAME="ss_visual_signal.ddp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.dfm" FORMNAME="" UNITNAME="ss_visual_signal.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.h" FORMNAME="" UNITNAME="ss_visual_signal.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.obj" FORMNAME="" UNITNAME="ss_visual_signal.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.~cpp" FORMNAME="" UNITNAME="Usuario.~cpp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.~ddp" FORMNAME="" UNITNAME="Usuario.~ddp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.~dfm" FORMNAME="" UNITNAME="Usuario.~dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.~h" FORMNAME="" UNITNAME="Usuario.~h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.ddp" FORMNAME="" UNITNAME="Usuario.ddp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.dfm" FORMNAME="" UNITNAME="Usuario.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.h" FORMNAME="" UNITNAME="Usuario.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.obj" FORMNAME="" UNITNAME="Usuario.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="VentanaPuertaAbierta.cpp" FORMNAME="VAlarmaPuerta" UNITNAME="VentanaPuertaAbierta" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=3082
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>
