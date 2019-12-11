@@ -11,6 +11,7 @@ static int port0;
 static int estadopin;
 static double Humedad;
 static double temperatura;
+static double Ventilador;
 
 void Store_Port1(int data){               //Set data of port1
     port1 = data;
@@ -18,7 +19,6 @@ void Store_Port1(int data){               //Set data of port1
 int estado_Port1(void){                       //Get data of port1
     return (port1);
 }
-
 void Store_AI0(float humity){             //Set data of port ai0
     humedad = humity*5+100;
 }
@@ -46,5 +46,11 @@ void Store_Humedad(double EstadoHumedad){
 }
 double EstadoHumedad(void){
     return (Humedad);
+}
+void Store_Fan(double EstadoFan){
+    Ventilador = EstadoFan/10;
+}
+double EstadoVentilador(void){
+    return (Ventilador);
 }
 

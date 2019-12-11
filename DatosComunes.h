@@ -12,5 +12,7 @@ double EstadoHumedad(void);
 void Store_Humedad(double);
 void Store_AI1(float);
 double estado_AI1(void);
+void Store_Fan(double);
+double EstadoVentilador(void);
 //---------------------------------------------------------------------------
 #endif

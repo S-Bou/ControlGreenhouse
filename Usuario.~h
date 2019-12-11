@@ -88,6 +88,7 @@ __published:	// IDE-managed Components
     void __fastcall CheckBoxValveClick(TObject *Sender);
     void __fastcall CheckBoxFanClick(TObject *Sender);
     void __fastcall ScrollBarElectroValvulaChange(TObject *Sender);
+    void __fastcall ScrollBarVentilacionChange(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TVPrincipal(TComponent* Owner);

@@ -20,13 +20,13 @@ int estado_Port1(void){                       //Get data of port1
 }
 
 void Store_AI0(float humity){             //Set data of port ai0
-    humedad = (humity*5+100);
+    humedad = humity*5+100;
 }
 double estado_AI0(void){                      //Get data of port ai0
     return (humedad);
 }
 void Store_AI1(float tempera){             //Set data of port ai1
-    temperatura = tempera+30;
+    temperatura = tempera*5+100;
 }
 double estado_AI1(void){                      //Get data of port ai1
     return (temperatura);

@@ -1,6 +1,6 @@
 object VPrincipal: TVPrincipal
-  Left = 4
-  Top = 124
+  Left = -2
+  Top = 126
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
@@ -2753,6 +2753,7 @@ object VPrincipal: TVPrincipal
       Height = 25
       PageSize = 0
       TabOrder = 7
+      OnChange = ScrollBarVentilacionChange
     end
   end
   object TimerEstadoPuertos: TTimer

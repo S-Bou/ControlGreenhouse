@@ -1,6 +1,6 @@
 object VPrincipal: TVPrincipal
-  Left = 400
-  Top = 126
+  Left = 4
+  Top = 124
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
@@ -2720,11 +2720,11 @@ object VPrincipal: TVPrincipal
       Left = 304
       Top = 193
       Width = 65
-      Height = 28
+      Height = 32
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -16
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
@@ -2735,11 +2735,11 @@ object VPrincipal: TVPrincipal
       Left = 304
       Top = 289
       Width = 65
-      Height = 28
+      Height = 32
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
-      Font.Height = -16
+      Font.Height = -19
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
@@ -2753,6 +2753,7 @@ object VPrincipal: TVPrincipal
       Height = 25
       PageSize = 0
       TabOrder = 7
+      OnChange = ScrollBarVentilacionChange
     end
   end
   object TimerEstadoPuertos: TTimer
