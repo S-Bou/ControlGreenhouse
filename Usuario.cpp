@@ -74,11 +74,11 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->ScrollBarElectroValvula->Position= HU_Inversa;
         VPrincipal->Edit4->Text=redondeo(HU_Inversa);
         VPrincipal->Edit4->Text=Edit4->Text+"%";
-        VPrincipal->Edit5->Text=humedad;
         VPrincipal->Shape8->Visible=true;
         VPrincipal->Shape9->Visible=false;
         VPrincipal->Shape10->Visible=false;
-    }else if(humedad>=40 && humedad<=160){
+    }
+    if(humedad>=40 && humedad<=160){
         ScrollBarElectroValvulaChange(ElectroValvula_OFF);
         VPrincipal->CheckBoxValve->Checked=false;
         VPrincipal->Shape9->Brush->Color=clBlue;
@@ -90,7 +90,8 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->Shape8->Visible=false;
         VPrincipal->Shape9->Visible=true;
         VPrincipal->Shape10->Visible=false;
-    }else{                                                  //Humity > 80%
+    }
+    if(humedad>160){                                          //Humity > 80%
         ScrollBarElectroValvulaChange(ElectroValvula_OFF);
         VPrincipal->CheckBoxValve->Checked=false;
         VPrincipal->Shape10->Brush->Color=clRed;
@@ -139,6 +140,7 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->CheckBoxFan->Checked=true;
         VPrincipal->Shape6->Brush->Color=clRed;
 
+
         VPrincipal->Shape11->Brush->Color=clBlue;
         VPrincipal->Shape11->Width=temperatura;
         VPrincipal->Shape11->Visible=true;
@@ -153,6 +155,14 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->Shape13->Visible=false;
     }
     if(tempereal>35){                               //Temperature > 35ºC
+
+        ScrollBarElectroValvulaChange(ElectroValvula_OFF);
+
+        float VE_Inversa = temperatura/2;
+        VPrincipal->ScrollBarVentilacion->Position= VE_Inversa;
+        VPrincipal->Edit5->Text=redondeo(VE_Inversa);
+        VPrincipal->Edit5->Text=Edit5->Text+"%";
+
         VPrincipal->Shape13->Brush->Color=clRed;
         VPrincipal->Shape13->Width=temperatura;
         VPrincipal->Shape11->Visible=false;

@@ -74,7 +74,6 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->ScrollBarElectroValvula->Position= HU_Inversa;
         VPrincipal->Edit4->Text=redondeo(HU_Inversa);
         VPrincipal->Edit4->Text=Edit4->Text+"%";
-        VPrincipal->Edit5->Text=humedad;
         VPrincipal->Shape8->Visible=true;
         VPrincipal->Shape9->Visible=false;
         VPrincipal->Shape10->Visible=false;
@@ -139,6 +138,7 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->CheckBoxFan->Checked=true;
         VPrincipal->Shape6->Brush->Color=clRed;
 
+
         VPrincipal->Shape11->Brush->Color=clBlue;
         VPrincipal->Shape11->Width=temperatura;
         VPrincipal->Shape11->Visible=true;
@@ -153,6 +153,14 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->Shape13->Visible=false;
     }
     if(tempereal>35){                               //Temperature > 35ºC
+
+        ScrollBarElectroValvulaChange(ElectroValvula_OFF);
+
+        float VE_Inversa = temperatura/2;
+        VPrincipal->ScrollBarVentilacion->Position= VE_Inversa;
+        VPrincipal->Edit5->Text=redondeo(VE_Inversa);
+        VPrincipal->Edit5->Text=Edit5->Text+"%";
+
         VPrincipal->Shape13->Brush->Color=clRed;
         VPrincipal->Shape13->Width=temperatura;
         VPrincipal->Shape11->Visible=false;
