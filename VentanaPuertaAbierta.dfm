@@ -1,6 +1,6 @@
 object VAlarmaPuerta: TVAlarmaPuerta
-  Left = 696
-  Top = 175
+  Left = 833
+  Top = 126
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Alarma de puerta abierta'

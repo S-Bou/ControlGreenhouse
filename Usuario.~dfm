@@ -1,6 +1,6 @@
 object VPrincipal: TVPrincipal
-  Left = -2
-  Top = 126
+  Left = 5
+  Top = 125
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
@@ -2552,9 +2552,9 @@ object VPrincipal: TVPrincipal
     object Label6: TLabel
       Left = 16
       Top = 112
-      Width = 227
+      Width = 210
       Height = 13
-      Caption = 'Se apaga si se abre la puerta. P1_1 = L'
+      Caption = 'Apagado entre 15 y 35 '#186'C.  P1_1 = L'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
