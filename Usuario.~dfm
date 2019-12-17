@@ -1,6 +1,6 @@
 object VPrincipal: TVPrincipal
-  Left = 4
-  Top = 119
+  Left = 182
+  Top = 118
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
